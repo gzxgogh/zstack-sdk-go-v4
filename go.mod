@@ -1,4 +1,4 @@
-module zstack-sdk-go-v4
+module github.com/gzxgogh/zstack-sdk-go-v4
 
 go 1.17
 
@@ -44,6 +44,7 @@ require (
 	github.com/golang/snappy v0.0.4 // indirect
 	github.com/google/go-querystring v1.0.0 // indirect
 	github.com/google/uuid v1.3.0 // indirect
+	github.com/gzxgogh/zstack-sdk-go-v4 v0.0.0-20220424011015-95aa41964fe7 // indirect
 	github.com/hashicorp/consul/api v1.11.0 // indirect
 	github.com/hashicorp/go-cleanhttp v0.5.1 // indirect
 	github.com/hashicorp/go-hclog v0.12.0 // indirect
