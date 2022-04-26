@@ -94,7 +94,7 @@ type DiskOfferingInventory struct {
 	DiskSize           int64  `json:"diskSize" bson:"diskSize"`       //云盘大小
 	SortKey            int    `json:"sortKey" bson:"sortKey"`         //排序键
 	State              string `json:"state" bson:"state"`
-	Type               string `json:"type,omitempty" bson:"type,omitempty"`         //亲和组类型, 当前为物理机亲和,未来将增加网络亲和、路由器亲和、数据中心或机架亲和等多种类型
+	Type               string `json:"type" bson:"type"`                             //亲和组类型, 当前为物理机亲和,未来将增加网络亲和、路由器亲和、数据中心或机架亲和等多种类型
 	CreateDate         string `json:"createDate" bson:"createDate"`                 //创建时间
 	LastOpDate         string `json:"lastOpDate" bson:"lastOpDate"`                 //最后一次修改时间
 	AllocationStrategy string `json:"allocationStrategy" bson:"allocationStrategy"` //分配策略

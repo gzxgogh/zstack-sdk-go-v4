@@ -22,24 +22,24 @@ type VolumeInventory struct {
 }
 
 type VolumeSnapshotInventory struct {
-	UUID                      string                  `json:"uuid" bson:"uuid"`                                   //资源的UUID，唯一标示该资源
-	Name                      string                  `json:"name" bson:"name"`                                   //资源名称
-	Description               string                  `json:"description,omitempty" bson:"description,omitempty"` //资源的详细描述
-	Type                      string                  `json:"type" bson:"type"`
-	VolumeUuid                string                  `json:"volumeUuid" bson:"volumeUuid"` //云盘UUID
-	TreeUuid                  string                  `json:"treeUuid" bson:"treeUuid"`
-	ParentUuid                string                  `json:"parentUuid" bson:"parentUuid"`
-	PrimaryStorageUuid        string                  `json:"primaryStorageUuid" bson:"primaryStorageUuid"` //主存储UUID
-	PrimaryStorageInstallPath string                  `json:"primaryStorageInstallPath" bson:"primaryStorageInstallPath"`
-	VolumeType                string                  `json:"volumeType" bson:"volumeType"`
-	Format                    string                  `json:"format" bson:"format"`
-	Latest                    bool                    `json:"latest" bson:"latest"`
-	Size                      int64                   `json:"size" bson:"size"`
-	State                     string                  `json:"state,omitempty" bson:"state,omitempty"`
-	Status                    string                  `json:"status" bson:"status"`
-	CreateDate                string                  `json:"createDate" bson:"createDate"` //创建时间
-	LastOpDate                string                  `json:"lastOpDate" bson:"lastOpDate"` //最后一次修改时间
-	BackupStorageRefs         volumeBackupStorageRefs `json:"backupStorageRefs" bson:"backupStorageRefs"`
+	UUID                      string                    `json:"uuid" bson:"uuid"`                                   //资源的UUID，唯一标示该资源
+	Name                      string                    `json:"name" bson:"name"`                                   //资源名称
+	Description               string                    `json:"description,omitempty" bson:"description,omitempty"` //资源的详细描述
+	Type                      string                    `json:"type" bson:"type"`
+	VolumeUuid                string                    `json:"volumeUuid" bson:"volumeUuid"` //云盘UUID
+	TreeUuid                  string                    `json:"treeUuid" bson:"treeUuid"`
+	ParentUuid                string                    `json:"parentUuid" bson:"parentUuid"`
+	PrimaryStorageUuid        string                    `json:"primaryStorageUuid" bson:"primaryStorageUuid"` //主存储UUID
+	PrimaryStorageInstallPath string                    `json:"primaryStorageInstallPath" bson:"primaryStorageInstallPath"`
+	VolumeType                string                    `json:"volumeType" bson:"volumeType"`
+	Format                    string                    `json:"format" bson:"format"`
+	Latest                    bool                      `json:"latest" bson:"latest"`
+	Size                      int64                     `json:"size" bson:"size"`
+	State                     string                    `json:"state,omitempty" bson:"state,omitempty"`
+	Status                    string                    `json:"status" bson:"status"`
+	CreateDate                string                    `json:"createDate" bson:"createDate"` //创建时间
+	LastOpDate                string                    `json:"lastOpDate" bson:"lastOpDate"` //最后一次修改时间
+	BackupStorageRefs         []volumeBackupStorageRefs `json:"backupStorageRefs" bson:"backupStorageRefs"`
 }
 
 type volumeBackupStorageRefs struct {
