@@ -48,13 +48,8 @@ type VmInventories struct {
 }
 
 type CloneVmInstanceResults struct {
-	NumberOfClonedVm int         `json:"numberOfClonedVm" bson:"numberOfClonedVm"`
-	Inventories      inventories `json:"inventories" bson:"inventories"`
-}
-
-type inventories struct {
-	Error     ErrorCode           `json:"error,omitempty" bson:"error,omitempty"` //错误信息
-	Inventory VmInstanceInventory `json:"inventory" bson:"inventory"`
+	NumberOfClonedVm int                   `json:"numberOfClonedVm" bson:"numberOfClonedVm"`
+	Inventories      []VmInstanceInventory `json:"inventories" bson:"inventories"`
 }
 
 type VmCdRomInventory struct {
