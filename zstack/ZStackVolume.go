@@ -9,6 +9,7 @@ import (
 	"github.com/maczh/logs"
 	"github.com/maczh/mgerr"
 	"github.com/maczh/utils"
+	"strings"
 )
 
 //创建云盘
@@ -126,15 +127,49 @@ func QueryVolume(params model.QueryVolumeRequest) mgresult.Result {
 	} else {
 		url = fmt.Sprintf("zstack/v1/volumes/%s", params.Uuid)
 	}
+
 	dataStr, err := request.Get(url, params)
 	if err != nil {
 		return mgerr.ErrorResultWithErr(errcode.QueryVolumeFailed, err)
 	}
 	var result model.QueryVolumeResponse
 	utils.FromJSON(dataStr, &result)
+	tagKeyLst := QueryTags(params)
+
+	var inventories []model.VolumeInventory
+	for _, volumeInventory := range result.Inventories {
+		uuid := volumeInventory.UUID
+		if tagKeyLst[uuid] != nil {
+			tagArr := strings.Split(fmt.Sprint(tagKeyLst[uuid]["tag"]), "::")
+			volumeInventory.WWM = tagArr[len(tagArr)-1]
+		}
+		inventories = append(inventories, volumeInventory)
+	}
+	result.Inventories = inventories
 	logs.Debug("最终的结果:{}", result)
 
 	return mgresult.Success(result)
+}
+
+func QueryTags(params model.QueryVolumeRequest) map[string]map[string]interface{} {
+	params.Uuid = ""
+	url := "zstack/v1/system-tags"
+	dataStr, err := request.Get(url, params)
+	if err != nil {
+		return nil
+	}
+	var result map[string]interface{}
+	utils.FromJSON(dataStr, &result)
+	tagLst := result["inventories"].([]interface{})
+	tagKeyLst := make(map[string]map[string]interface{})
+	for _, item := range tagLst {
+		obj := item.(map[string]interface{})
+		resourceUuid := fmt.Sprint(obj["resourceUuid"])
+		if fmt.Sprint(obj["inherent"]) == "true" {
+			tagKeyLst[resourceUuid] = obj
+		}
+	}
+	return tagKeyLst
 }
 
 //获取云盘格式

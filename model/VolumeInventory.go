@@ -19,6 +19,7 @@ type VolumeInventory struct {
 	CreateDate         string `json:"createDate" bson:"createDate"` //创建时间
 	LastOpDate         string `json:"lastOpDate" bson:"lastOpDate"` //最后一次修改时间
 	IsShareable        bool   `json:"isShareable" bson:"isShareable"`
+	WWM                string `json:"wwm" bson:"wwm"`
 }
 
 type VolumeSnapshotInventory struct {
