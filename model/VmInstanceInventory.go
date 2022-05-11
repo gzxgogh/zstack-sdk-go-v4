@@ -48,8 +48,8 @@ type VmInventories struct {
 }
 
 type CloneVmInstanceResults struct {
-	NumberOfClonedVm int                   `json:"numberOfClonedVm" bson:"numberOfClonedVm"`
-	Inventories      []VmInstanceInventory `json:"inventories" bson:"inventories"`
+	NumberOfClonedVm int                              `json:"numberOfClonedVm" bson:"numberOfClonedVm"`
+	Inventories      []map[string]VmInstanceInventory `json:"inventories" bson:"inventories"`
 }
 
 type VmCdRomInventory struct {
