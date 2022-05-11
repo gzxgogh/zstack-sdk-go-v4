@@ -134,6 +134,48 @@ func QueryVmInstance(vmInstance model.QueryVmInstanceRequest) mgresult.Result {
 	return mgresult.Success(vmInstanceResp)
 }
 
+//根据ip查询云主机
+func QueryVmByIp(params model.QueryVmByIpRequest) mgresult.Result {
+
+	var data model.QueryVmNicRequest
+	data.ReqConfig.Host = params.Host
+	data.ReqConfig.AccessKeyId = params.AccessKeyId
+	data.ReqConfig.AccessKeySecret = params.AccessKeySecret
+
+	url := fmt.Sprintf("zstack/v1/vm-instances/nics")
+	dataStr, err := request.Get(url, data)
+	if err != nil {
+		return mgerr.ErrorResultWithErr(errcode.QueryVmNicFailed, err)
+	}
+	var resp model.QueryVmNicResponse
+	utils.FromJSON(dataStr, &resp)
+
+	vmUuid := ""
+	for _, vmNic := range resp.Inventories {
+		if params.Ip == vmNic.IP {
+			vmUuid = vmNic.VMInstanceUUID
+		}
+	}
+	if vmUuid == "" {
+		return mgresult.Success(nil)
+	}
+
+	var vmInstance model.QueryVmInstanceRequest
+	vmInstance.ReqConfig.Host = params.Host
+	vmInstance.ReqConfig.AccessKeyId = params.AccessKeyId
+	vmInstance.ReqConfig.AccessKeySecret = params.AccessKeySecret
+	vmInstance.UUID = vmUuid
+	result := QueryVmInstance(vmInstance)
+	vmResp := result.Data.(model.QueryVmInstanceResponse)
+	if len(vmResp.Inventories) == 0 {
+		return mgresult.Success(nil)
+	}
+	var queryVmByIpResp model.QueryVmByIpResponse
+	queryVmByIpResp.Inventory = vmResp.Inventories[0]
+
+	return mgresult.Success(queryVmByIpResp)
+}
+
 //启动云主机
 func StartVmInstance(vmInstance model.StartVmInstanceRequest) mgresult.Result {
 	//PUT zstack/v1/vm-instances/{uuid}/actions

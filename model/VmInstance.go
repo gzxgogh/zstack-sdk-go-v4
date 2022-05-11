@@ -190,6 +190,19 @@ type QueryVmInstanceResponse struct {
 	Error       ErrorCode             `json:"error,omitempty" bson:"error,omitempty"` //错误信息
 }
 
+//通过ip查询云主机信息
+type QueryVmByIpRequest struct {
+	ReqConfig
+	Ip         string   `json:"ip" bson:"ip"`                                     //ip
+	SystemTags []string `json:"systemTags,omitempty" bson:"systemTags,omitempty"` //云主机系统标签
+	UserTags   []string `json:"userTags,omitempty" bson:"userTags,omitempty"`     //云主机用户标签
+}
+
+type QueryVmByIpResponse struct {
+	Inventory VmInstanceInventory `json:"inventories" bson:"inventories"`         //云主机详细清单
+	Error     ErrorCode           `json:"error,omitempty" bson:"error,omitempty"` //错误信息
+}
+
 //启动云主机
 type StartVmInstanceRequest struct {
 	ReqConfig
