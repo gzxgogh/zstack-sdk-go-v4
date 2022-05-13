@@ -167,7 +167,7 @@ func QueryVmByIp(params model.QueryVmByIpRequest) mgresult.Result {
 	vmInstance.UUID = vmUuid
 	result := QueryVmInstance(vmInstance)
 
-	return mgresult.Success(result)
+	return result
 }
 
 //启动云主机
