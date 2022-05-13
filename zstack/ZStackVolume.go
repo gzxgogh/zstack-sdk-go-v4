@@ -141,7 +141,7 @@ func QueryVolume(params model.QueryVolumeRequest) mgresult.Result {
 		uuid := volumeInventory.UUID
 		if tagKeyLst[uuid] != nil {
 			tagArr := strings.Split(fmt.Sprint(tagKeyLst[uuid]["tag"]), "::")
-			volumeInventory.WWM = tagArr[len(tagArr)-1]
+			volumeInventory.WWN = tagArr[len(tagArr)-1]
 		}
 		inventories = append(inventories, volumeInventory)
 	}
