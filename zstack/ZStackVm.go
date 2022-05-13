@@ -166,14 +166,8 @@ func QueryVmByIp(params model.QueryVmByIpRequest) mgresult.Result {
 	vmInstance.ReqConfig.AccessKeySecret = params.AccessKeySecret
 	vmInstance.UUID = vmUuid
 	result := QueryVmInstance(vmInstance)
-	vmResp := result.Data.(model.QueryVmInstanceResponse)
-	if len(vmResp.Inventories) == 0 {
-		return mgresult.Success(nil)
-	}
-	var queryVmByIpResp model.QueryVmByIpResponse
-	queryVmByIpResp.Inventory = vmResp.Inventories[0]
 
-	return mgresult.Success(queryVmByIpResp)
+	return mgresult.Success(result)
 }
 
 //启动云主机
