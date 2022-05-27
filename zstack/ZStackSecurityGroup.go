@@ -164,7 +164,7 @@ func AddVmNicToSecurityGroup(params model.AddVmNicToSecurityGroupRequest) mgresu
 //从安全组删除虚拟机网卡
 func DeleteVmNicFromSecurityGroup(params model.DeleteVmNicFromSecurityGroupRequest) mgresult.Result {
 	//DELETE zstack/v1/security-groups/{securityGroupUuid}/vm-instances/nics?vmNicUuids={vmNicUuids}
-	url := fmt.Sprintf("zstack/v1/security-groups/%s/vm-instances/nics?vmNicUuids=%s", params.SecurityGroupUuid, params.VmNicUuids)
+	url := fmt.Sprintf("zstack/v1/security-groups/%s/vm-instances/nics", params.SecurityGroupUuid)
 
 	dataStr, err := request.DeleteUrlWithParams(url, params)
 	if err != nil {
