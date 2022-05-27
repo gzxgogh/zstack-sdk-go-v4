@@ -166,7 +166,7 @@ func DeleteVmNicFromSecurityGroup(params model.DeleteVmNicFromSecurityGroupReque
 	//DELETE zstack/v1/security-groups/{securityGroupUuid}/vm-instances/nics?vmNicUuids={vmNicUuids}
 	url := fmt.Sprintf("zstack/v1/security-groups/%s/vm-instances/nics?vmNicUuids=%s", params.SecurityGroupUuid, params.VmNicUuids)
 
-	dataStr, err := request.Delete(url, params)
+	dataStr, err := request.DeleteUrlWithParams(url, params)
 	if err != nil {
 		return mgerr.ErrorResultWithErr(errcode.DeleteVmNicFromSecurityGroupFailed, err)
 	}
