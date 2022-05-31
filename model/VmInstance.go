@@ -458,12 +458,16 @@ type GetVmAttachableL3NetworkResponse struct {
 //加载L3网络到云主机
 type AttachL3NetworkToVmRequest struct {
 	ReqConfig
-	VmInstanceUuid string   `json:"vmInstanceUuid" bson:"vmInstanceUuid"`             //云主机UUID
-	L3NetworkUuid  string   `json:"l3NetworkUuid" bson:"l3NetworkUuid"`               //三层网络UUID	                                                //三层网络UUID列表 可指定一个或多个三层网络，云主机会在每个三层网络上创建一个网卡。
-	DriverType     string   `json:"driverType" bson:"driverType"`                     //网卡驱动类型,vcenter侧的VPC可选的网卡驱动:1.E1000E,2.E1000,3.Vmxnet3,4.Sriov
-	StaticIp       string   `json:"staticIp,omitempty" bson:"staticIp,omitempty"`     //指定分配给云主机的IP地址
-	SystemTags     []string `json:"systemTags,omitempty" bson:"systemTags,omitempty"` //云主机系统标签
-	UserTags       []string `json:"userTags,omitempty" bson:"userTags,omitempty"`     //云主机用户标签
+	VmInstanceUuid      string              `json:"vmInstanceUuid" bson:"vmInstanceUuid"` //云主机UUID
+	L3NetworkUuid       string              `json:"l3NetworkUuid" bson:"l3NetworkUuid"`   //三层网络UUID
+	AttachL3NetworkToVm AttachL3NetworkToVm `json:"attachL3NetworkToVm" bson:"attachL3NetworkToVm"`
+	SystemTags          []string            `json:"systemTags,omitempty" bson:"systemTags,omitempty"` //云主机系统标签
+	UserTags            []string            `json:"userTags,omitempty" bson:"userTags,omitempty"`     //云主机用户标签
+}
+
+type AttachL3NetworkToVm struct {
+	DriverType string `json:"driverType" bson:"driverType"`                 //网卡驱动类型,vcenter侧的VPC可选的网卡驱动:1.E1000E,2.E1000,3.Vmxnet3,4.Sriov
+	StaticIp   string `json:"staticIp,omitempty" bson:"staticIp,omitempty"` //指定分配给云主机的IP地址
 }
 
 type AttachL3NetworkToVmResponse struct {
