@@ -79,12 +79,11 @@ func DestroyVmInstance(vmInstance model.DestroyVmInstanceRequest) mgresult.Resul
 	if err != nil {
 		return mgerr.ErrorResultWithErr(errcode.DestroyVmInstanceFailed, err)
 	}
-	logs.Debug("最终的结果:{}", dataStr)
 	var vmInstanceResp model.DestroyVmInstanceResponse
 	utils.FromJSON(dataStr, &vmInstanceResp)
 	logs.Debug("最终结果:{}", vmInstanceResp)
 
-	return mgresult.Success(dataStr)
+	return mgresult.Success(vmInstanceResp)
 }
 
 //恢复已删除云主机
