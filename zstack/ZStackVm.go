@@ -80,6 +80,9 @@ func DestroyVmInstance(vmInstance model.DestroyVmInstanceRequest) mgresult.Resul
 		return mgerr.ErrorResultWithErr(errcode.DestroyVmInstanceFailed, err)
 	}
 	logs.Debug("最终的结果:{}", dataStr)
+	var vmInstanceResp model.DestroyVmInstanceResponse
+	utils.FromJSON(dataStr, &vmInstanceResp)
+	logs.Debug("最终结果:{}", vmInstanceResp)
 
 	return mgresult.Success(dataStr)
 }
