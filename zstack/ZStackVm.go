@@ -376,8 +376,8 @@ func AttachIsoToVmInstance(vmInstance model.AttachIsoToVmInstanceRequest) mgresu
 //卸载云主机上的ISO
 func DetachIsoFromVmInstance(vmInstance model.DetachIsoFromVmInstanceRequest) mgresult.Result {
 	//DELETE zstack/v1/vm-instances/{vmInstanceUuid}/iso?isoUuid={isoUuid}
-	url := fmt.Sprintf("zstack/v1/vm-instances/%s", vmInstance.VmInstanceUuid)
-	dataStr, err := request.Delete(url, vmInstance)
+	url := fmt.Sprintf("zstack/v1/vm-instances/%s/iso", vmInstance.VmInstanceUuid)
+	dataStr, err := request.DeleteUrlWithParams(url, vmInstance)
 	if err != nil {
 		return mgerr.ErrorResultWithErr(errcode.DetachIsoFromVmInstanceFailed, err)
 	}
