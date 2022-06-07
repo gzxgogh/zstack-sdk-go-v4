@@ -54,10 +54,13 @@ type ExpungeDataVolumeResponse struct {
 //恢复云盘
 type RecoverDataVolumeRequest struct {
 	ReqConfig
-	Uuid              string                 `json:"Uuid" bson:"Uuid"`                                               //资源的UUID，唯一标示该资源
-	RecoverDataVolume map[string]interface{} `json:"recoverDataVolume,omitempty" bson:"recoverDataVolume,omitempty"` //放空
-	SystemTags        []string               `json:"systemTags,omitempty" bson:"systemTags,omitempty"`               //云主机系统标签
-	UserTags          []string               `json:"userTags,omitempty" bson:"userTags,omitempty"`                   //云主机用户标签
+	Uuid              string            `json:"Uuid" bson:"Uuid"` //资源的UUID，唯一标示该资源
+	RecoverDataVolume RecoverDataVolume `json:"recoverDataVolume" bson:"recoverDataVolume"`
+	SystemTags        []string          `json:"systemTags,omitempty" bson:"systemTags,omitempty"` //云主机系统标签
+	UserTags          []string          `json:"userTags,omitempty" bson:"userTags,omitempty"`     //云主机用户标签
+}
+
+type RecoverDataVolume struct {
 }
 
 type RecoverDataVolumeResponse struct {
