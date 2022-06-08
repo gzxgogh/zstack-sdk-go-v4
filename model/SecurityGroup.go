@@ -177,9 +177,15 @@ type AddSecurityGroupRuleRequest struct {
 }
 
 type AddSecurityGroupRuleParams struct {
-	Rules                    []SecurityGroupRules `json:"rules" bson:"rules"`                                       //安全组中的规则
-	RemoteSecurityGroupUuids []string             `json:"remoteSecurityGroupUuids" bson:"remoteSecurityGroupUuids"` //应用组间策略的远端安全组UUID
+	Rules []map[string]interface{} `json:"rules" bson:"rules"`
+	//[]map[string]interface{}是结构体SecurityGroupRules，但是Protocol的值为TCP,UDP时必修填写StartPort，EndPort，为ALL,ICMP时不能有StartPort，EndPort字段，也不能为0，所以不用结构体。
+	RemoteSecurityGroupUuids []string `json:"remoteSecurityGroupUuids" bson:"remoteSecurityGroupUuids"` //应用组间策略的远端安全组UUID
 }
+
+//type AddSecurityGroupRuleParams struct {
+//	Rules                    []SecurityGroupRules `json:"rules" bson:"rules"`                                       //安全组中的规则
+//	RemoteSecurityGroupUuids []string             `json:"remoteSecurityGroupUuids" bson:"remoteSecurityGroupUuids"` //应用组间策略的远端安全组UUID
+//}
 
 type AddSecurityGroupRuleResponse struct {
 	Inventory SecurityGroupInventory `json:"inventory" bson:"inventory"`
