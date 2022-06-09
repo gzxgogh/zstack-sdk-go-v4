@@ -240,9 +240,9 @@ func QuerySecurityGroupRule(params model.QuerySecurityGroupRuleRequest) mgresult
 //删除安全组规则
 func DeleteSecurityGroupRule(params model.DeleteSecurityGroupRuleRequest) mgresult.Result {
 	//DELETE zstack/v1/security-groups/rules?ruleUuids={ruleUuids}
-	url := fmt.Sprintf("zstack/v1/security-groups/rules?ruleUuids=%s", params.RuleUuids)
+	url := fmt.Sprintf("zstack/v1/security-groups/rules")
 
-	dataStr, err := request.Post(url, params)
+	dataStr, err := request.DeleteUrlWithParams(url, params)
 	if err != nil {
 		return mgerr.ErrorResultWithErr(errcode.DeleteSecurityGroupRuleFailed, err)
 	}
