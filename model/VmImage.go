@@ -17,7 +17,7 @@ type AddImageParams struct {
 	System             string   `json:"system,omitempty" bson:"system,omitempty"`             //是否系统镜像（如，云路由镜像）
 	Format             string   `json:"format" bson:"format"`                                 //镜像的格式，比如：raw
 	Platform           string   `json:"platform,omitempty" bson:"platform,omitempty"`         //镜像的系统平台,Linux,Windows,WindowsVirtio,Other,Paravirtualization
-	BackupStorageUuids string   `json:"backupStorageUuids" bson:"backupStorageUuids"`         //指定添加镜像的镜像服务器UUID列表
+	BackupStorageUuids []string `json:"backupStorageUuids" bson:"backupStorageUuids"`         //指定添加镜像的镜像服务器UUID列表
 	Type               string   `json:"type,omitempty" bson:"type,omitempty"`                 //内部使用字段
 	ResourceUuid       string   `json:"resourceUuid,omitempty" bson:"resourceUuid,omitempty"` //资源UUID。若指定，镜像会使用该字段值作为UUID。
 	Architecture       string   `json:"architecture,omitempty" bson:"architecture,omitempty"` //x86_64,aarch64,mips64el

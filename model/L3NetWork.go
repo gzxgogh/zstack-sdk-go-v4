@@ -253,14 +253,14 @@ type AddIpRangeRequest struct {
 }
 
 type AddIpRangeParams struct {
-	Name         string `json:"name" bson:"name"`               //资源名称
-	Description  string `json:"description" bson:"description"` //资源的详细描述
+	Name         string `json:"name" bson:"name"`                                   //资源名称
+	Description  string `json:"description,omitempty" bson:"description,omitempty"` //资源的详细描述
 	StartIp      string `json:"startIp" bson:"startIp"`
 	EndIp        string `json:"endIp" bson:"endIp"`
 	Netmask      string `json:"netmask" bson:"netmask"`
 	Gateway      string `json:"gateway" bson:"gateway"`
 	IpRangeType  string `json:"ipRangeType" bson:"ipRangeType"`
-	ResourceUuid string `json:"resourceUuid" bson:"resourceUuid"`
+	ResourceUuid string `json:"resourceUuid,omitempty" bson:"resourceUuid,omitempty"`
 }
 
 type AddIpRangeResponse struct {
