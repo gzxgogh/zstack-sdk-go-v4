@@ -144,9 +144,12 @@ func SyncImageSize(params model.SyncImageSizeRequest) mgresult.Result {
 
 //获取镜像服务器候选
 func GetCandidateBackupStorageForCreatingImage(params model.GetCandidateBackupStorageForCreatingImageRequest) mgresult.Result {
-	//GET zstack/v1/images/candidate-backup-storage
-	url := fmt.Sprintf("zstack/v1/images/candidate-backup-storage")
-
+	url := ""
+	if params.VolumeUuid != "" {
+		url = fmt.Sprintf("zstack/v1/images/volumes/%s/candidate-backup-storage", params.VolumeUuid)
+	} else {
+		url = fmt.Sprintf("zstack/v1/images/volume-snapshots/%s/candidate-backup-storage", params.VolumeSnapshotUuid)
+	}
 	dataStr, err := request.Get(url, params)
 	if err != nil {
 		return mgerr.ErrorResultWithErr(errcode.GetCandidateBackupStorageForCreatingImageFailed, err)

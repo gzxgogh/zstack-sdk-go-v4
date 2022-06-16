@@ -159,7 +159,8 @@ type GetCandidateBackupStorageForCreatingImageRequest struct {
 }
 
 type GetCandidateBackupStorageForCreatingImageResponse struct {
-	Error ErrorCode `json:"error,omitempty" bson:"error,omitempty"` //错误信息
+	Inventories []BackupStorageInventory `json:"inventories" bson:"inventories"`
+	Error       ErrorCode                `json:"error,omitempty" bson:"error,omitempty"` //错误信息
 }
 
 //从根云盘创建根云盘镜像
