@@ -13,6 +13,7 @@ import (
 )
 
 func Get(url string, data interface{}) (string, error) {
+	logs.Debug("请求参数：{}", data)
 	dataStr := utils.ToJSON(data)
 	obj := make(map[string]interface{})
 	utils.FromJSON(dataStr, &obj)
@@ -77,6 +78,7 @@ func Get(url string, data interface{}) (string, error) {
 }
 
 func Post(url string, params interface{}) (string, error) {
+	logs.Debug("请求参数：{}", params)
 	dataStr := utils.ToJSON(params)
 	obj := make(map[string]interface{})
 	utils.FromJSON(dataStr, &obj)
@@ -132,6 +134,7 @@ func Post(url string, params interface{}) (string, error) {
 }
 
 func Put(url string, params interface{}) (string, error) {
+	logs.Debug("请求参数：{}", params)
 	dataStr := utils.ToJSON(params)
 	obj := make(map[string]interface{})
 	utils.FromJSON(dataStr, &obj)
@@ -186,6 +189,8 @@ func Put(url string, params interface{}) (string, error) {
 }
 
 func Delete(url string, params interface{}) (string, error) {
+	logs.Debug("请求参数：{}", params)
+	logs.Debug("请求参数：{}", params)
 	dataStr := utils.ToJSON(params)
 	obj := make(map[string]interface{})
 	utils.FromJSON(dataStr, &obj)
@@ -241,6 +246,7 @@ func Delete(url string, params interface{}) (string, error) {
 }
 
 func DeleteUrlWithParams(url string, params interface{}) (string, error) {
+	logs.Debug("请求参数：{}", params)
 	dataStr := utils.ToJSON(params)
 	obj := make(map[string]interface{})
 	utils.FromJSON(dataStr, &obj)
