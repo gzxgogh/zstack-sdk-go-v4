@@ -340,8 +340,8 @@ func AttachDataVolumeToVm(params model.AttachDataVolumeToVmRequest) mgresult.Res
 //从云主机上卸载云盘
 func DetachDataVolumeFromVm(params model.DetachDataVolumeFromVmRequest) mgresult.Result {
 	//DELETE zstack/v1/volumes/{uuid}/vm-instances?vmUuid={vmUuid}
-	url := fmt.Sprintf("zstack/v1/volumes/%s", params.Uuid)
-	dataStr, err := request.Delete(url, params)
+	url := fmt.Sprintf("zstack/v1/volumes/%s/vm-instances", params.Uuid)
+	dataStr, err := request.DeleteUrlWithParams(url, params)
 	if err != nil {
 		return mgerr.ErrorResultWithErr(errcode.DetachDataVolumeFromVmFailed, err)
 	}
