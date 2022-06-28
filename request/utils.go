@@ -34,6 +34,7 @@ func GetSign(method, uri, accessKeyId, accessKeySecret string) map[string]string
 	result := map[string]string{
 		"Authorization": signStr,
 		"date":          data["date"],
+		"Content-type":  "application/json; charset=utf-8",
 	}
 	return result
 }
