@@ -46,7 +46,7 @@ type AttachNetworkServiceToL3NetworkRequest struct {
 }
 
 type AttachNetworkServiceToL3NetworkParams struct {
-	NetworkServices map[string]interface{} `json:"networkServiceProviderUuid" bson:"networkServiceProviderUuid"` //网络服务提供模块UUID
+	NetworkServices map[string]interface{} `json:"networkServices" bson:"networkServices"` //网络服务提供模块UUID
 }
 
 type AttachNetworkServiceToL3NetworkResponse struct {
