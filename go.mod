@@ -4,10 +4,10 @@ go 1.17
 
 require (
 	github.com/levigross/grequests v0.0.0-20190908174114-253788527a1a
-	github.com/maczh/gintool v1.0.2
-	github.com/maczh/logs v1.0.2
+	github.com/maczh/gintool v1.0.7
+	github.com/maczh/logs v1.0.4
 	github.com/maczh/mgerr v1.0.3
-	github.com/maczh/utils v1.0.6
+	github.com/maczh/utils v1.0.8
 )
 
 require (
@@ -68,8 +68,8 @@ require (
 	github.com/lestrrat/go-strftime v0.0.0-20180220042222-ba3bf9c1d042 // indirect
 	github.com/lib/pq v1.1.1 // indirect
 	github.com/maczh/mgcache v1.0.0 // indirect
-	github.com/maczh/mgconfig v1.0.8 // indirect
-	github.com/maczh/mgtrace v1.0.0 // indirect
+	github.com/maczh/mgconfig v1.1.7 // indirect
+	github.com/maczh/mgtrace v1.0.1 // indirect
 	github.com/mailru/easyjson v0.7.7 // indirect
 	github.com/mattbaird/elastigo v0.0.0-20170123220020-2fe47fd29e4b // indirect
 	github.com/mattn/go-colorable v0.1.8 // indirect
