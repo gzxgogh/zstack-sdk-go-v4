@@ -61,8 +61,8 @@ type GetMetricDataRequest struct {
 }
 
 type GetMetricDataResponse struct {
-	MetricData []MetricData `json:"metricData" bson:"metricData"`
-	Error      ErrorCode    `json:"error,omitempty" bson:"error,omitempty"` //错误信息
+	MetricData []interface{} `json:"data" bson:"data"`
+	Error      ErrorCode     `json:"error,omitempty" bson:"error,omitempty"` //错误信息
 }
 
 type MetricData struct {
