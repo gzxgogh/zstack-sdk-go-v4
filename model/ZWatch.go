@@ -52,10 +52,10 @@ type GetMetricDataRequest struct {
 	MetricName               string   `json:"metricName" bson:"metricName"`                   //监控指标名称
 	StartTime                string   `json:"startTime,omitempty" bson:"startTime,omitempty"` //开始时间
 	EndTime                  string   `json:"endTime,omitempty" bson:"endTime,omitempty"`     //结束时间
-	Period                   int      `json:"period,omitempty" bson:"period",omitempty`       //数据精度
+	Period                   int      `json:"period,omitempty" bson:"period,omitempty"`       //数据精度
 	Labels                   []string `json:"labels,omitempty" bson:"labels,omitempty"`       //过滤标签
 	Functions                []string `json:"functions,omitempty" bson:"functions,omitempty"` //函数列表
-	OffsetAheadOfCurrentTime int64    `json:"offsetAheadOfCurrentTime,omitempty" bson:"offsetAheadOfCurrentTime,omitempty`
+	OffsetAheadOfCurrentTime int64    `json:"offsetAheadOfCurrentTime,omitempty" bson:"offsetAheadOfCurrentTime,omitempty"`
 	SystemTags               []string `json:"systemTags,omitempty" bson:"systemTags,omitempty"` //云主机系统标签
 	UserTags                 []string `json:"userTags,omitempty" bson:"userTags,omitempty"`
 }
