@@ -50,8 +50,8 @@ type GetMetricDataRequest struct {
 	ReqConfig
 	Namespace                string   `json:"namespace" bson:"namespace"`                     //名字空间名称
 	MetricName               string   `json:"metricName" bson:"metricName"`                   //监控指标名称
-	StartTime                int64    `json:"startTime,omitempty" bson:"startTime,omitempty"` //开始时间
-	EndTime                  int64    `json:"endTime,omitempty" bson:"endTime,omitempty"`     //结束时间
+	StartTime                string   `json:"startTime,omitempty" bson:"startTime,omitempty"` //开始时间
+	EndTime                  string   `json:"endTime,omitempty" bson:"endTime,omitempty"`     //结束时间
 	Period                   int      `json:"period,omitempty" bson:"period",omitempty`       //数据精度
 	Labels                   []string `json:"labels,omitempty" bson:"labels,omitempty"`       //过滤标签
 	Functions                []string `json:"functions,omitempty" bson:"functions,omitempty"` //函数列表
