@@ -197,8 +197,15 @@ type GetFreeIpRequest struct {
 }
 
 type GetFreeIpResponse struct {
-	Inventory L3NetworkInventory `json:"inventory" bson:"inventory"`
-	Error     ErrorCode          `json:"error,omitempty" bson:"error,omitempty"` //错误信息
+	Inventories []FreeIpInventory `json:"inventories" bson:"inventories"`
+	Error       ErrorCode         `json:"error,omitempty" bson:"error,omitempty"` //错误信息
+}
+
+type FreeIpInventory struct {
+	IpRangeUuid string `json:"ipRangeUuid" bson:"ipRangeUuid"`
+	Ip          string `json:"ip" bson:"ip"`
+	NetMask     string `json:"netMask" bson:"netMask"`
+	GateWay     string `json:"gateWay" bson:"gateWay"`
 }
 
 //检查IP可用性
