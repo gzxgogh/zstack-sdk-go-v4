@@ -13,8 +13,9 @@ type VmNicInventory struct {
 	IpVersion      int      `json:"ipVersion" bson:"ipVersion"`           //IP地址版本
 	DeviceID       int      `json:"deviceId" bson:"deviceId"`             //设备ID 标识网卡在客户操作系统（guest operating system）以太网设备中顺序的整形数字。例如， 0通常代表eth0，1通常代表eth1。
 	InternalName   string   `json:"internalName" bson:"internalName"`     //名称
-	Type           string   `json:"type" bson:"type"`                     //
-	CreateDate     string   `json:"createDate" bson:"createDate"`         //创建时间
-	LastOpDate     string   `json:"lastOpDate" bson:"lastOpDate"`         //最后一次修改时间
+	DriverType     string   `json:"driverType" bson:"driverType"`
+	Type           string   `json:"type" bson:"type"`             //
+	CreateDate     string   `json:"createDate" bson:"createDate"` //创建时间
+	LastOpDate     string   `json:"lastOpDate" bson:"lastOpDate"` //最后一次修改时间
 	UsedIps        []UsedIp `json:"usedIps" bson:"usedIps"`
 }
