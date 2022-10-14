@@ -264,8 +264,8 @@ func UpdateVolume(params model.UpdateVolumeRequest) mgresult.Result {
 
 //设置云盘限速
 func SetVolumeQoS(params model.SetVolumeQoSRequest) mgresult.Result {
-	//PUT zstack/v1/volumes/{uuid}/qos
-	url := fmt.Sprintf("zstack/v1/volumes/%s/qos", params.Uuid)
+	//PUT zstack/v1/volumes/{uuid}/actions
+	url := fmt.Sprintf("zstack/v1/volumes/%s/actions", params.Uuid)
 	dataStr, err := request.Put(url, params)
 	if err != nil {
 		return mgerr.ErrorResultWithErr(errcode.SetVolumeQoSFailed, err)
