@@ -248,7 +248,7 @@ type UpdateVolumeResponse struct {
 type SetVolumeQoSRequest struct {
 	ReqConfig
 	Uuid       string             `json:"uuid" bson:"uuid"`                                 //UUID
-	Params     SetVolumeQoSParams `json:"params" bson:"params"`                             //放volumeBandwidth,mode
+	Params     SetVolumeQoSParams `json:"setVolumeQos" bson:"setVolumeQos"`                 //放volumeBandwidth,mode
 	SystemTags []string           `json:"systemTags,omitempty" bson:"systemTags,omitempty"` //云主机系统标签
 	UserTags   []string           `json:"userTags,omitempty" bson:"userTags,omitempty"`     //云主机用户标签
 }
