@@ -39,10 +39,13 @@ func Get(url string, data interface{}) (string, error) {
 				paramStr += fmt.Sprintf("%s=%s&", k, fmt.Sprint(s))
 			}
 		} else {
-			if IsBool(v) {
+			switch v.(type) {
+			case float64:
+				paramStr += fmt.Sprintf("%s=%f&", k, v)
+			case string:
+				paramStr += fmt.Sprintf("%s=%s&", k, v)
+			default:
 				paramStr += fmt.Sprintf("%s=%v&", k, v)
-			} else {
-				paramStr += fmt.Sprintf("%s=%s&", k, fmt.Sprint(v))
 			}
 		}
 	}
@@ -271,10 +274,13 @@ func DeleteUrlWithParams(url string, params interface{}) (string, error) {
 				paramStr += fmt.Sprintf("%s=%s&", k, fmt.Sprint(s))
 			}
 		} else {
-			if IsBool(v) {
+			switch v.(type) {
+			case float64:
+				paramStr += fmt.Sprintf("%s=%f&", k, v)
+			case string:
+				paramStr += fmt.Sprintf("%s=%s&", k, v)
+			default:
 				paramStr += fmt.Sprintf("%s=%v&", k, v)
-			} else {
-				paramStr += fmt.Sprintf("%s=%s&", k, fmt.Sprint(v))
 			}
 		}
 	}
