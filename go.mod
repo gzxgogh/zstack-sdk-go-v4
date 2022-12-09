@@ -4,7 +4,7 @@ go 1.17
 
 require (
 	github.com/levigross/grequests v0.0.0-20190908174114-253788527a1a
-	github.com/maczh/mgin v1.1.13
+	github.com/maczh/mgin v1.1.15
 )
 
 require (
@@ -22,6 +22,7 @@ require (
 	github.com/gofrs/uuid v4.1.0+incompatible // indirect
 	github.com/google/go-querystring v1.0.0 // indirect
 	github.com/henrylee2cn/mahonia v0.0.0-20150715080413-be6deb105fbc // indirect
+	github.com/huandu/go-clone v1.4.1 // indirect
 	github.com/json-iterator/go v1.1.12 // indirect
 	github.com/knadh/koanf v1.4.3 // indirect
 	github.com/kr/fs v0.1.0 // indirect
@@ -33,7 +34,6 @@ require (
 	github.com/mitchellh/reflectwalk v1.0.2 // indirect
 	github.com/modern-go/concurrent v0.0.0-20180306012644-bacd9c7ef1dd // indirect
 	github.com/modern-go/reflect2 v1.0.2 // indirect
-	github.com/muesli/cache2go v0.0.0-20211005105910-8e46465cca4a // indirect
 	github.com/pelletier/go-toml/v2 v2.0.1 // indirect
 	github.com/pkg/sftp v1.13.5 // indirect
 	github.com/sadlil/gologger v0.0.0-20180131031757-2507bf651df8 // indirect
