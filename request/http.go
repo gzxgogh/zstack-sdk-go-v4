@@ -4,8 +4,8 @@ import (
 	"errors"
 	"fmt"
 	"github.com/levigross/grequests"
-	"github.com/maczh/logs"
-	"github.com/maczh/utils"
+	"github.com/maczh/mgin/logs"
+	"github.com/maczh/mgin/utils"
 	"io/ioutil"
 	"net/http"
 	"strings"
@@ -56,18 +56,23 @@ func Get(url string, data interface{}) (string, error) {
 	logs.Debug("url:{}", url)
 
 	req, err := http.NewRequest("GET", url, nil)
+	if err != nil {
+		logs.Error("http请求错误:{}", err.Error())
+		return "", err
+	}
 	req.Header.Set("Authorization", header["Authorization"])
 	req.Header.Set("Date", header["date"])
 	client := &http.Client{}
 	resp, err := client.Do(req)
 	if err != nil {
-		logs.Error("错误:{}", err.Error())
+		logs.Error("http请求错误:{}", err.Error())
 		return "请求错误", err
 	}
 	defer resp.Body.Close()
 	body, err := ioutil.ReadAll(resp.Body)
 	if err != nil {
-		logs.Error("错误:{}", err.Error())
+		logs.Error("解析错误:{}", err.Error())
+		return "", err
 	}
 
 	logs.Debug("请求后的状态码:{}", resp.StatusCode)
@@ -101,7 +106,7 @@ func Post(url string, params interface{}) (string, error) {
 		Headers: header,
 	})
 	if err != nil {
-		logs.Error("错误:{}", err.Error())
+		logs.Error("http请求错误:{}", err.Error())
 		return "请求错误", err
 	}
 	logs.Debug("返回结果:{}", resp.String())
@@ -156,7 +161,7 @@ func Put(url string, params interface{}) (string, error) {
 		Headers: header,
 	})
 	if err != nil {
-		logs.Error("错误:{}", err.Error())
+		logs.Error("http请求错误:{}", err.Error())
 		return "请求错误", err
 	}
 	logs.Debug("返回结果:{}", resp.String())
@@ -212,7 +217,7 @@ func Delete(url string, params interface{}) (string, error) {
 		Headers: header,
 	})
 	if err != nil {
-		logs.Error("异步调用API请求错误:{}", err.Error())
+		logs.Error("http请求错误:{}", err.Error())
 		return "请求错误", err
 	}
 	logs.Debug("返回结果:{}", resp.String())
@@ -230,7 +235,7 @@ func Delete(url string, params interface{}) (string, error) {
 				Headers: header,
 			})
 			if err != nil {
-				logs.Error("错误:{}", err.Error())
+				logs.Error("http请求错误:{}", err.Error())
 				return "请求错误", err
 			}
 			logs.Debug("异步请求后的状态码:{}", resp.StatusCode)
@@ -294,7 +299,7 @@ func DeleteUrlWithParams(url string, params interface{}) (string, error) {
 		Headers: header,
 	})
 	if err != nil {
-		logs.Error("异步调用API请求错误:{}", err.Error())
+		logs.Error("http请求错误:{}", err.Error())
 		return "请求错误", err
 	}
 	logs.Debug("返回结果:{}", resp.String())
@@ -312,7 +317,7 @@ func DeleteUrlWithParams(url string, params interface{}) (string, error) {
 				Headers: header,
 			})
 			if err != nil {
-				logs.Error("错误:{}", err.Error())
+				logs.Error("http请求错误:{}", err.Error())
 				return "请求错误", err
 			}
 			logs.Debug("异步请求后的状态码:{}", resp.StatusCode)

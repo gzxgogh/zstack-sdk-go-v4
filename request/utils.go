@@ -5,7 +5,7 @@ import (
 	"crypto/sha1"
 	"encoding/base64"
 	"fmt"
-	"github.com/maczh/logs"
+	"github.com/maczh/mgin/logs"
 	"strings"
 	"time"
 )
