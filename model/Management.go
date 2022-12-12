@@ -69,6 +69,7 @@ type ConsoleInventory struct {
 	Hostname string `json:"hostname" bson:"hostname"` //宿主机名称
 	Port     int    `json:"port" bson:"port"`         //端口
 	Token    string `json:"token" bson:"token"`       //口令
+	Version  string `json:"version" bson:"version"`   //版本
 }
 
 type ConsoleProxyAgentInventory struct {
